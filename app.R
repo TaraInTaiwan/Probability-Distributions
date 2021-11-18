@@ -75,15 +75,7 @@ ui <- fluidPage(
                              sidebarPanel(width = 4, 
                                           numericInput("min", "Minimum", 2),
                                           numericInput("max", "Maximum", 5)
-                                          # sliderInput("a","a",
-                                          #             value = 2,
-                                          #             min = -10,
-                                          #             max = 10),
-                                          # sliderInput("b","b",
-                                          #             value = 5,
-                                          #             min = -10,
-                                          #             max = 10)
-                             ),
+                                          ),
                              mainPanel(
                                  fluidRow(
                                      column(12, plotOutput("plot_unif1"))
@@ -100,13 +92,34 @@ ui <- fluidPage(
                                                       min = 0,
                                                       max = 10,
                                                       step = 0.01)
-                             ),
+                                          ),
                              mainPanel(
                                  fluidRow(
                                      column(12, plotOutput("plot_exp1"))
                                      )
                                  )
                              )
+                         ),
+                tabPanel("Normal ",
+                         sidebarLayout(
+                             sidebarPanel(width = 4,
+                                          sliderInput("mu","mu",
+                                                      value = 175,
+                                                      min = 0,
+                                                      max = 200,
+                                                      step = 0.1),
+                                          sliderInput("sigma","sigma",
+                                                      value = 6,
+                                                      min = 0.1,
+                                                      max = 50,
+                                                      step = 0.1)
+                                          ),
+                             mainPanel(
+                                 fluidRow(
+                                     column(12, plotOutput("plot_norm1"))
+                                     )
+                                 )
+                         )
                          )
                 )
     )
@@ -166,7 +179,7 @@ server <- function(input, output) {
     ##### exp (λ) #####
     output$plot_exp1 <- renderPlot({
         
-        x <- seq(from = min(input$lambda2-0.5,0),to = input$lambda2+3, by=0.01)
+        x <- seq(from = min(rexp(100,input$lambda2)),to = max(rexp(100,input$lambda2)), by=0.01)
         plot(x,dexp(x,input$lambda2),
              type = 'l',pch=16,
              main = paste("Exp ( λ=",input$lambda2,")"),
@@ -174,6 +187,14 @@ server <- function(input, output) {
              xlab = 'x',
              lwd=3)
     })
-
-}
+    ##### N(μ,σ) #####
+    output$plot_norm1 <- renderPlot({
+        x <- seq(from = min(rnorm(100,input$mu,input$sigma)), to = max(rnorm(100,input$mu,input$sigma)), by = 0.1)
+        plot(x, dnorm(x,input$mu,input$sigma), type = "l", 
+             ylab = "Probability",
+             lwd="3",
+             main = paste("Normal Distribution ( μ=",input$mu,",σ=",input$sigma,")"),
+             xlab = 'x')
+        })
+    }
 shinyApp(ui = ui, server = server)
