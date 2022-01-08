@@ -115,7 +115,7 @@ body <- dashboardBody(
                   sidebarPanel(width = 4, 
                                sliderInput("p_geo","Probability",
                                            value = 0.6,
-                                           min = 0.0001,
+                                           min = 0.1,
                                            max = 1)
                   ),
                   mainPanel(plotOutput("plot_geo1"))
@@ -127,7 +127,7 @@ body <- dashboardBody(
                   sidebarPanel(width = 4, 
                                sliderInput("lambda","lambda",
                                            value = 2,
-                                           min = 0.0001,
+                                           min = 0.1,
                                            max = 50)
                   ),
                   mainPanel(plotOutput("plot_poi1"))
@@ -168,9 +168,9 @@ body <- dashboardBody(
                   sidebarPanel(width = 4,
                                sliderInput("lambda2","lambda",
                                            value = 2,
-                                           min = 0,
-                                           max = 10,
-                                           step = 0.01)
+                                           min = 0.1,
+                                           max = 5,
+                                           step = 0.1)
                                ),
                   mainPanel(plotOutput("plot_exp1")))
             ),
@@ -315,7 +315,7 @@ server <- function(input, output, session) {
          main = paste("Unif ( a=",input$min,",","b=",input$max,")"),
          ylab = 'density',
          xlab = 'x',
-         col="#ffafcc",
+         col="deepskyblue",
          lwd="4")
   })
   ##### exp (λ) #####
@@ -327,7 +327,7 @@ server <- function(input, output, session) {
          main = paste("Exp ( λ=",input$lambda2,")"),
          ylab = 'density',
          xlab = 'x',
-         col="#ffafcc",
+         col="deepskyblue",
          lwd="4")
   })
   ##### N(μ,σ) #####
@@ -337,7 +337,7 @@ server <- function(input, output, session) {
          ylab = "density",
          main = paste("Normal ( μ=",input$mu,",σ=",input$sigma,")"),
          xlab = 'x',
-         col="#ffafcc",
+         col="deepskyblue",
          lwd="4")
   })
 }
