@@ -3,5 +3,5 @@
 ### run r code 
 ```
 library(shiny)
-runGitHub(repo = "Distribution",username = "TaraInTaiwan",ref = "main")
+runGitHub(repo = "Probability-Distributions",username = "TaraInTaiwan",ref = "main")
 ```
