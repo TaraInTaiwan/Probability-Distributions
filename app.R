@@ -315,7 +315,8 @@ server <- function(input, output, session) {
          main = paste("Unif ( a=",input$min,",","b=",input$max,")"),
          ylab = 'density',
          xlab = 'x',
-         lwd=3)
+         col="#ffafcc",
+         lwd="4")
   })
   ##### exp (λ) #####
   output$plot_exp1 <- renderPlot({
@@ -326,16 +327,18 @@ server <- function(input, output, session) {
          main = paste("Exp ( λ=",input$lambda2,")"),
          ylab = 'density',
          xlab = 'x',
-         lwd=3)
+         col="#ffafcc",
+         lwd="4")
   })
   ##### N(μ,σ) #####
   output$plot_norm1 <- renderPlot({
     x <- seq(from = min(rnorm(100,input$mu,input$sigma)), to = max(rnorm(100,input$mu,input$sigma)), by = 0.1)
     plot(x, dnorm(x,input$mu,input$sigma), type = "l", 
          ylab = "density",
-         lwd="3",
          main = paste("Normal ( μ=",input$mu,",σ=",input$sigma,")"),
-         xlab = 'x')
+         xlab = 'x',
+         col="#ffafcc",
+         lwd="4")
   })
 }
 shinyApp(ui, server)
