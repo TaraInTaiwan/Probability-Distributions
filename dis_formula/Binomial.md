@@ -1,4 +1,5 @@
- if the random variable X follows the binomial distribution with parameters n ∈ {\displaystyle \mathbb {N} }\mathbb {N}  and p ∈ [0,1], we write X ~ B(n, p). The probability of getting exactly k successes in n independent Bernoulli trials is given by the probability mass function:
+If the random variable X follows the binomial distribution with parameters n ∈ {\displaystyle \mathbb {N} }\mathbb {N}  and p ∈ [0,1], we write X\sim \text{Bin}(n, p). 
+The probability of x successes in n independent Bernoulli trials as follow:
 
 Distribution|Probability mass function|Mean
 ------|-------|------
