@@ -1,6 +1,3 @@
-
-# Probability Distribution
-
 ## Introduction
 This is a web app for learn probability distribution.
 
@@ -10,4 +7,3 @@ This is a web app for learn probability distribution.
 library(shiny)
 runGitHub(repo = "Probability-Distributions",username = "TaraInTaiwan",ref = "main")
 ```
-## References
