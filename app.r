@@ -123,28 +123,27 @@ body <- dashboardBody(
     ),
     #-------------- Page2 ------------- 
     tabItem(tabName = "Page2",
-            #----------- radioButtons ----------------------
-            # Boxes need to be put in a row (or column)
-            fluidRow(
-              box(title = "Discrate",width = 4,
-                  status = "warning",
-                  solidHeader = FALSE, 
-                  collapsible = FALSE,
-                  "Choose one of the following major discrete distributions.",
-                  br(),
-                  radioButtons("dist1", "Distribution type:",
-                               c("Binomial","Negative Binomial",
-                                 "Geometric","Poisson"))
-              ),
-              box(title = "Definitions",width = 8,
-                  status = "warning",
-                  solidHeader = FALSE, 
-                  collapsible = FALSE,
-                  uiOutput("txt1")
-                  # htmlOutput("txt1")
-                  # verbatimTextOutput("txt1")
-              )
-            ),
+            # #----------- radioButtons ----------------------
+            # fluidRow(
+            #   box(title = "Discrate",width = 4,
+            #       status = "warning",
+            #       solidHeader = FALSE, 
+            #       collapsible = FALSE,
+            #       "Choose one of the following major discrete distributions.",
+            #       br(),
+            #       radioButtons("dist1", "Distribution type:",
+            #                    c("Binomial","Negative Binomial",
+            #                      "Geometric","Poisson"))
+            #   ),
+            #   box(title = "Definitions",width = 8,
+            #       status = "warning",
+            #       solidHeader = FALSE, 
+            #       collapsible = FALSE,
+            #       uiOutput("txt1")
+            #       # htmlOutput("txt1")
+            #       # verbatimTextOutput("txt1")
+            #   )
+            # ),
             #----------- bin ------------------------------------
             fluidRow(
               box(title = "Binomial", width = 6,
@@ -208,21 +207,20 @@ body <- dashboardBody(
     ),
     #-------------- Page3 ------------- 
     tabItem(tabName = "Page3",
-            # Boxes need to be put in a row (or column)
-            fluidRow(
-              box(title = "Continuous",width = 4,
-                  solidHeader = FALSE, 
-                  collapsible = FALSE,
-                  "Choose one of the following major continuous distributions.",
-                  br(),
-                  radioButtons("dist2", "Distribution type:",
-                               c("Uniform","Exponential","Normal"))
-                  ),
-              box(title = "Definitions",width = 8,solidHeader = FALSE, 
-                  collapsible = FALSE,
-                  uiOutput("txt2")
-              )
-            ),
+            # fluidRow(
+            #   box(title = "Continuous",width = 4,
+            #       solidHeader = FALSE, 
+            #       collapsible = FALSE,
+            #       "Choose one of the following major continuous distributions.",
+            #       br(),
+            #       radioButtons("dist2", "Distribution type:",
+            #                    c("Uniform","Exponential","Normal"))
+            #       ),
+            #   box(title = "Definitions",width = 8,solidHeader = FALSE, 
+            #       collapsible = FALSE,
+            #       uiOutput("txt2")
+            #   )
+            # ),
             #----------- unif ------------------------------------
             fluidRow(
               box(title = "Uniform", width = 6,
