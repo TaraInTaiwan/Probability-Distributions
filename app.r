@@ -32,8 +32,8 @@ sidebar <- dashboardSidebar(width = NULL,disable = FALSE,## 可以把邊邊關�
                               menuItem("Summary", tabName = "Page0", icon = icon("list")),
                               menuItem("Basic Probability", tabName = "Page1", icon = icon("list")),
                               menuItem("Discrate", tabName = "Page2", icon = icon("chart-bar")),
-                              menuItem("Continuous", tabName = "Page3", icon = icon("chart-area")),
-                              menuItem("About",tabName = "final", icon = icon("address-card"))
+                              menuItem("Continuous", tabName = "Page3", icon = icon("chart-area"))
+                              # menuItem("About",tabName = "final", icon = icon("address-card"))
                               # ref of icon : https://fontawesome.com/v5.15/icons 
                             ))
 #------------ ui-Body content -----
@@ -111,13 +111,14 @@ body <- dashboardBody(
                   ),
                   mainPanel(plotOutput("plot_dice"))
               )
-            ),
-            fluidRow(
-              box(title = "coin", width = 6,
-                  collapsible = FALSE,
-                  tableOutput("data_coin")
-              )
             )
+            # ,
+            # fluidRow(
+            #   box(title = "coin", width = 6,
+            #       collapsible = FALSE,
+            #       tableOutput("data_coin")
+            #   )
+            # )
                   
     ),
     #-------------- Page2 ------------- 
@@ -367,34 +368,11 @@ server <- function(input, output, session) {
   
   # https://stackoverflow.com/questions/61287106/how-to-create-a-table-in-a-reactive-object-in-shiny
   
-  tableData = reactiveValues(d1 = as.data.frame(matrix(nrow=2,ncol = 4)))
-  test = reactive({
-    if (is.null(v$times)) return()
-    count <- table(v$times)
-    sums <- integer(2)
-    if(nrow(count)>1){
-      sums <- count
-    }else{
-      ifelse(names(count)=="1",
-             sums[1] <- as.numeric(count),
-             sums[2] <- as.numeric(count))
-    }
-    dice <- data.frame(number = c("Heads","Tails"), 
-                       count = sums) %>%
-      mutate(p = (count / sum(count)), theoretical = (1/2))
-    
-    
-    d1 = as.data.frame(matrix(nrow=2,ncol = 4))
-    names(d1)=names(dice)
-    d1$number=dice$number
-    d1$count=dice$count
-    d1$p=dice$p
-    d1$theoretical=dice$theoretical
-  })
+
   
-  output$data_coin <- renderTable({
-    tableData$d1
-  })
+  # output$data_coin <- renderTable({
+  #   tableData$d1
+  # })
 
   #------------ dice ------------
   output$plot_dice <- renderPlot({
