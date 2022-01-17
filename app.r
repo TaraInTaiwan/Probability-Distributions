@@ -281,7 +281,7 @@ body <- dashboardBody(
             ),#fluidRow
             #----------- Normal ------------------------------------
             fluidRow(
-              box(title = "Normal", width = 6,
+              box(title = "Normal", width = 12,
                   collapsible = TRUE,
                   sidebarPanel(width = 4, 
                                sliderInput("mu","mu",
