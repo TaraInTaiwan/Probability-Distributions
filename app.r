@@ -581,7 +581,7 @@ server <- function(input, output, session) {
   })
   #------------ N(μ,σ) #####
   output$plot_norm1 <- renderPlot({
-    x <- seq(from = min(rnorm(100,input$mu,input$sigma)), to = max(rnorm(100,input$mu,input$sigma)), by = 0.1)
+    x <- seq(from = min(rnorm(100,input$mu,input$sigma))-5, to = max(rnorm(100,input$mu,input$sigma))+5, by = 0.1)
     plot(x, dnorm(x,input$mu,input$sigma), type = "l", 
          ylab = "density",
          main = paste("Normal ( μ=",input$mu,",σ=",input$sigma,")"),
