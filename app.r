@@ -88,7 +88,7 @@ body <- dashboardBody(
                 collapsible = FALSE,
                 sidebarPanel(
                   actionButton("action_coin", "Flip the coin")
-                  # textOutput("text_coin")
+                  textOutput("text_coin")
                   ),# sidebarPanel
                 mainPanel(
                   uiOutput("coin")
@@ -99,7 +99,7 @@ body <- dashboardBody(
                 collapsible = FALSE,
                 sidebarPanel(
                   actionButton("action_dice", "Roll the dice")
-                  # textOutput("text_dice")
+                  textOutput("text_dice")
                   ),#sidebarPanel
                 mainPanel(
                 uiOutput("dice")
@@ -341,12 +341,12 @@ server <- function(input, output, session) {
         tags$img(src="coin2.png", height = '200px')
     
   })
-  # output$text_coin <- renderText({
-  #   if (is.null(v1$times)) return("Outcome：")
-  #   if (v1$times == 1) return("Outcome：Head")
-  #   else 
-  #     return("Outcome：Tail")
-  #   })
+  output$text_coin <- renderText({
+    if (is.null(v1$times)) return("Outcome：")
+    if (v1$times == 1) return("Outcome：Head")
+    else 
+      return("Outcome：Tail")
+    })
   #------------ dice png ------------
   v2 <- reactiveValues(times = NULL)
   observeEvent(input$action_dice, { 
@@ -361,15 +361,15 @@ server <- function(input, output, session) {
     if(v2$times == 5)return(tags$img(src="dice5.png", height = '200px'))
     if(v2$times == 6)return(tags$img(src="dice6.png", height = '200px'))
   }) 
-  # output$text_dice <- renderText({
-  #   if (is.null(v2$times)) return("Outcome：")
-  #   if (v2$times == 1) return("Outcome：1")
-  #   if (v2$times == 2) return("Outcome：2")
-  #   if (v2$times == 3) return("Outcome：3")
-  #   if (v2$times == 4) return("Outcome：4")
-  #   if (v2$times == 5) return("Outcome：5")
-  #   if (v2$times == 6) return("Outcome：6")
-  # })
+  output$text_dice <- renderText({
+    if (is.null(v2$times)) return("Outcome：")
+    if (v2$times == 1) return("Outcome：1")
+    if (v2$times == 2) return("Outcome：2")
+    if (v2$times == 3) return("Outcome：3")
+    if (v2$times == 4) return("Outcome：4")
+    if (v2$times == 5) return("Outcome：5")
+    if (v2$times == 6) return("Outcome：6")
+  })
   
   #------------ coin plot ------------
   # https://ithelp.ithome.com.tw/articles/10196754
