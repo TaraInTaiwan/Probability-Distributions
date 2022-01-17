@@ -435,7 +435,8 @@ server <- function(input, output, session) {
       ggtitle(title)+
       # scale_x_continuous(labels = 1:2, breaks = 1:2)+
       scale_y_continuous(limits = c(0, max(dice$p)+0.05),
-                         breaks = seq(0, max(dice$p)+0.05, by = 0.1)) 
+                         breaks = seq(0, max(dice$p)+0.05, by = 0.1)) + 
+      geom_hline(yintercept=1/2, linetype="dashed", color = "red")
   })
   
   
