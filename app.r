@@ -1,4 +1,4 @@
-# update:2022.01.17
+# update:2022.01.18
 library(shiny)
 library(shinydashboard)
 library(plotly)
@@ -20,8 +20,8 @@ theme_basic <- function() {
 header <- dashboardHeader(title = "Probability")
 sidebar <- dashboardSidebar(width = NULL,disable = FALSE,
                             sidebarMenu(
-                              menuItem("Summary", tabName = "Page0", icon = icon("list")),
                               menuItem("Basic Probability", tabName = "Page1", icon = icon("dice")),
+                              menuItem("Summary", tabName = "Page0", icon = icon("list")),
                               menuItem("Discrate", tabName = "Page2", icon = icon("chart-bar")),
                               menuItem("Continuous", tabName = "Page3", icon = icon("chart-area"))
                               # menuItem("About",tabName = "final", icon = icon("address-card"))
