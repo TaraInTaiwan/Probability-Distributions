@@ -1,4 +1,5 @@
 # update:2022.01.18
+install.packages("shinydashboard")
 library(shiny)
 library(shinydashboard)
 library(plotly)
